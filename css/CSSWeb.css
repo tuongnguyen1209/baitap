@@ -1,0 +1,37 @@
+header{
+    display: flex;
+}
+
+nav{
+    margin-left: auto;
+}
+nav ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+nav ul>li{
+    padding: 10px;
+}
+nav ul>li>a{
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    padding: 15px,10px;
+}
+nav ul>li>a:hover{
+    background-color: tomato;
+    text-decoration: none;
+}
+
+div.subject{
+    background-color: goldenrod;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    
+}
+div.subject>h1{
+    font-size: 5vw;
+}
