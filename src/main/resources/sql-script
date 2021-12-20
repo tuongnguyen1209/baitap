@@ -1,0 +1,119 @@
+-- demo
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `price` float NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(500) NOT NULL,
+  `role` enum('ROLE_USER','ROLE_ADMIN') NOT NULL,
+  `first_name` VARCHAR(45) NULL,
+  `last_name` VARCHAR(45) NULL,
+  `address` VARCHAR(500) NULL,
+  `email` VARCHAR(100) NULL,
+  `created_by` VARCHAR(45) NULL,
+  `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update_by` VARCHAR(45) NULL,
+  `last_update_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `color`(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `group` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `price` DECIMAL(25,7) NOT NULL,
+  `description` TEXT NULL,
+  `m_lab_channel_1` DECIMAL(10,4) NOT NULL,
+  `m_lab_channel_2` DECIMAL(10,4) NOT NULL,
+  `m_lab_channel_3` DECIMAL(10,4) NOT NULL,
+  `m_lab_channel_4` DECIMAL(10,4) NOT NULL,
+  `m_lab_channel_5` DECIMAL(10,4) NOT NULL,
+  `m_rgb_r` DECIMAL(10,4) NOT NULL,
+  `m_rgb_g` DECIMAL(10,4) NOT NULL,
+  `m_rgb_b` DECIMAL(10,4) NOT NULL,
+  `m_cmyk_c` DECIMAL(10,4) NOT NULL,
+  `m_cmyk_m` DECIMAL(10,4) NOT NULL,
+  `m_cmyk_y` DECIMAL(10,4) NOT NULL,
+  `m_cmyk_k` DECIMAL(10,4) NOT NULL,
+  `created_by` VARCHAR(45) NULL,
+  `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update_by` VARCHAR(45) NULL,
+  `last_update_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`));
+
+  CREATE TABLE `color_log`(
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `m_rgb_r` DECIMAL(10,4) NOT NULL,
+    `m_rgb_g` DECIMAL(10,4) NOT NULL,
+    `m_rgb_b` DECIMAL(10,4) NOT NULL,
+    `query_counter` INT NOT NULL,
+    `response` TEXT NULL,
+    `created_by` VARCHAR(45) NULL,
+    `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `last_update_by` VARCHAR(45) NULL,
+    `last_update_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`));
+
+ CREATE TABLE `color_reference`(
+   `id` INT NOT NULL AUTO_INCREMENT,
+   `color_id` INT NOT NULL,
+   `group` VARCHAR(45) NOT NULL,
+   `name` VARCHAR(45) NOT NULL,
+   `price` DECIMAL(25,7) NOT NULL,
+   `description` TEXT NULL,
+   `m_lab_channel_1` DECIMAL(10,4) NOT NULL,
+   `m_lab_channel_2` DECIMAL(10,4) NOT NULL,
+   `m_lab_channel_3` DECIMAL(10,4) NOT NULL,
+   `m_lab_channel_4` DECIMAL(10,4) NOT NULL,
+   `m_lab_channel_5` DECIMAL(10,4) NOT NULL,
+   `m_rgb_r` DECIMAL(10,4) NOT NULL,
+   `m_rgb_g` DECIMAL(10,4) NOT NULL,
+   `m_rgb_b` DECIMAL(10,4) NOT NULL,
+   `m_cmyk_c` DECIMAL(10,4) NOT NULL,
+   `m_cmyk_m` DECIMAL(10,4) NOT NULL,
+   `m_cmyk_y` DECIMAL(10,4) NOT NULL,
+   `m_cmyk_k` DECIMAL(10,4) NOT NULL,
+   `created_by` VARCHAR(45) NULL,
+   `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   `last_update_by` VARCHAR(45) NULL,
+   `last_update_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+   PRIMARY KEY (`id`));
+
+CREATE TABLE `order` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `total_quantity` INT NOT NULL,
+  `total_amount` DECIMAL(25,7) NOT NULL,
+  `status` enum('Processing','Delivery', 'Done') NOT NULL,
+  `created_by` VARCHAR(45) NULL,
+  `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update_by` VARCHAR(45) NULL,
+  `last_update_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `order_detail` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `order_id` INT NOT NULL,
+  `color_id` INT NOT NULL,
+  `quantity` INT NOT NULL,
+  `price` DECIMAL(25,7) NOT NULL,
+  `created_by` VARCHAR(45) NULL,
+  `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update_by` VARCHAR(45) NULL,
+  `last_update_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `contact` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `subject` VARCHAR(100) NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `message` VARCHAR(5000) NULL,
+  `created_by` VARCHAR(45) NULL,
+  `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update_by` VARCHAR(45) NULL,
+  `last_update_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`));
